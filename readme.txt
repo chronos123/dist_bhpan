@@ -4,7 +4,7 @@
 python setup.py install
 
 
-
+bhpan test 运行
 # 第一次运行会提示登录
 # 凭据存储路径   windows: AppData/Roaming/bhpan   linux: ~/.local/share/bhpan
 
