@@ -4,17 +4,16 @@
 python setup.py install
 
 
-
+bhpan test 运行
 # 第一次运行会提示登录
 # 凭据存储路径   windows: AppData/Roaming/bhpan   linux: ~/.local/share/bhpan
 
 
 
-# ls
+# ls 远程根目录为 home
 bhpan ls [远程文件/文件夹]
+bhpan ls home
 #（可用home表示文档根目录）
-bhpan ls home -h
-
 
 
 # upload

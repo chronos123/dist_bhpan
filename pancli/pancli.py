@@ -1,9 +1,16 @@
 
-
-from . import utils
-from .utils.api_manager import ApiManager
-from .utils.api import ApiException
-from .utils.local_storage import StoredObject
+try:
+    from . import utils
+except:
+    import utils
+try:
+    from .utils.api_manager import ApiManager
+    from .utils.api import ApiException
+    from .utils.local_storage import StoredObject
+except:
+    from utils.api_manager import ApiManager
+    from utils.api import ApiException
+    from utils.local_storage import StoredObject
 
 import argparse
 
@@ -197,8 +204,6 @@ def download_file_single(manager: ApiManager, remote_path, local_dir, rename=Non
                     t.update(len(data))
                     f.write(data)
         print('done')
-
-
 
 
 def show_file_info(manager: ApiManager, remote_path, readable=False):
@@ -509,10 +514,10 @@ def test(manager: ApiManager):
         # print(link.name)
         # print(bin(link.link_info.perm))
         # print(link.list_dir())
-
-        doc_info = manager.get_resource_info_by_path(process_remote_home(manager, '~/temp/dist_bhpan/dist'))
-        link_info = manager.delete_link(doc_info.docid)
-        print(link_info)
+        test_path = "#/home"
+        doc_info = manager.get_resource_info_by_path(process_remote_home(manager, test_path))
+        # link_info = manager.delete_link(doc_info.docid)
+        print(doc_info)
 
     except Exception as e:
         import traceback

@@ -134,16 +134,28 @@ class ApiManager():
         if (path is None or path == ''):
             return None
         try:
-            r = api.post_json(self._make_url('/file/getinfobypath'), {
-                'namepath': path,
-            }, tokenid=self._tokenid)
+            r1 = api.post_json(
+                self._make_url("/entrydoc2/get"),
+                {
+                    "doctype": 1
+                },
+                tokenid=self._tokenid
+            )
+            # r2 = api.get(
+            #     self._make_url("/entrydoc2/getmanaged"),
+            #     tokenid=self._tokenid
+            # )
+            # r = api.post_json(self._make_url('/file/getinfobypath'), {
+            #     'namepath': path,
+            # }, tokenid=self._tokenid)
+            r = r1["docinfos"][0]
         except api.ApiException as e:
             if (e.err is not None and (e.err['errcode'] in [404006, 403024])):
                 return None
             else:
                 raise
         res = ResourceInfoData()
-        for k in ['size', 'docid', 'rev', 'modified', 'client_mtime', 'name']:
+        for k in ['size', 'docid', 'rev', 'modified', 'duedate', 'name']:
             setattr(res, k, r[k])
         return res
 
