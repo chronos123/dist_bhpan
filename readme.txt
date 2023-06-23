@@ -10,11 +10,10 @@ bhpan test 运行
 
 
 
-# ls
+# ls 远程根目录为 home
 bhpan ls [远程文件/文件夹]
+bhpan ls home
 #（可用home表示文档根目录）
-bhpan ls home -h
-
 
 
 # upload
